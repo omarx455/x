@@ -1,3 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg">
-  <script>alert('XSS')</script>
+  <a xlink:href="javascript:alert('XSS')">
+    <text x="20" y="20">Click me</text>
+  </a>
 </svg>
